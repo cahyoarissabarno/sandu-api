@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const cors = require('cors')
 
@@ -26,8 +28,7 @@ app.get('/', (req, res)=>{
 
 require('./app/routes/user.routes')(app)
 
-const PORT = 8000
-app.listen(PORT,()=>{
-    console.log(`Server is running on http://localhost:${PORT}`)
+app.listen(process.env.APP_PORT,()=>{
+    console.log(`Server is running on ${process.env.APP_HOST}:${process.env.APP_PORT}`)
 })
 
