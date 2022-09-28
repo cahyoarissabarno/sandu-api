@@ -4,19 +4,19 @@ module.exports = (app) => {
     const height = require('../controllers/height.controller')
     const router = require('express').Router()
 
-    router.get('/', users.getUser)
+    router.get('/:id', users.getUser)
     router.get('/all', users.getAllUser)
-    router.get('/login', users.getUserByNik)
+    router.get('/:nik', users.getUserByNik)
     router.post('/', users.addUser)
     router.put('/', users.updateUser)
     router.delete('/', users.deleteUser)
 
-    router.get('/weight', weight.getWeight)
+    router.get('/weight/:id', weight.getWeight)
     router.post('/weight', weight.addWeight)
     router.put('/weight', weight.updateWeight)
     router.patch('/weight', weight.deleteWeight)
 
-    router.get('/height', height.getHeight)
+    router.get('/height/:id', height.getHeight)
     router.post('/height', height.addHeight)
     router.put('/height', height.updateHeight)
     router.patch('/height', height.deleteHeight)

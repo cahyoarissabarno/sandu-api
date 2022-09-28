@@ -51,7 +51,8 @@
  }
 
  exports.getUser = (req, res) => {
-    User.find({_id: req.body.user_id})
+    const { id } = req.params
+    User.find({_id: id})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
@@ -62,7 +63,8 @@
  }
 
  exports.getUserByNik = (req, res) => {
-    User.find({childs_nik: req.body.childs_nik}, {weight:0, height:0})
+    const { nik } = req.params
+    User.find({childs_nik: nik}, {weight:0, height:0})
     .then((result) => {
         res.send(result)
     }).catch((err) => {

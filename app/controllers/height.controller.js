@@ -2,15 +2,14 @@
  const User = db.users
 
  exports.getHeight = (req, res) => {
-    req.body.user_id ? User.find({_id: req.body.user_id}, {height:1}).limit(1)
+    const { id } = req.params
+    User.find({_id: id}, {height:1}).limit(1)
     .then((result) => {
         res.send(result)
     }).catch((err) => {
         res.status(409).send({
             message: err.message || "Error while get height"
         })
-    }) : res.status(409).send({
-        message: "Input Invalid"
     })
  }
 
