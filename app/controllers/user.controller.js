@@ -51,28 +51,24 @@
  }
 
  exports.getUser = (req, res) => {
-    req.body.user_id ? User.find({_id: req.body.user_id})
+    User.find({_id: req.body.user_id})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
         res.status(409).send({
             message: err.message || "Error while user"
         })
-    }) : res.status(409).send({
-        message: "Input Invalid"
     })
  }
 
  exports.getUserByNik = (req, res) => {
-    req.body.childs_nik ? User.find({childs_nik: req.body.childs_nik}, {weight:0, height:0})
+    User.find({childs_nik: req.body.childs_nik}, {weight:0, height:0})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
         res.status(409).send({
             message: err.message || "Error while login"
         })
-    }) : res.status(409).send({
-        message: "Input Invalid"
     })
  }
 
@@ -88,15 +84,13 @@
  }
 
  exports.deleteUser = (req, res) => {
-    req.body.user_id ? User.deleteOne({"_id": req.body.user_id})
+    User.deleteOne({"_id": req.body.user_id})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
         res.status(409).send({
             message: err.message || "Error while delete user"
         })
-    }) : res.status(409).send({
-        message: "Input Invalid"
     })
  }
 
