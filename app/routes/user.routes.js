@@ -6,7 +6,7 @@ module.exports = (app) => {
 
     router.get('/:id', users.getUser)
     router.get('/all', users.getAllUser)
-    router.get('/:nik', users.getUserByNik)
+    router.get('/login/:nik', users.getUserByNik)
     router.post('/', users.addUser)
     router.put('/', users.updateUser)
     router.delete('/', users.deleteUser)
