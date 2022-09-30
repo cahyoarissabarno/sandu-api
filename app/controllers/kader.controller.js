@@ -24,7 +24,7 @@ exports.login = (req, res)=>{
     .then((result) => {
         const passCheck = bcrypt.compareSync(req.body.password, result[0].password)
         if(passCheck){
-            res.send(result)
+            res.send({status: "Authorized", id:result[0]._id})
         }else{
             res.status(409).send({
                 message: "Password Salah"
