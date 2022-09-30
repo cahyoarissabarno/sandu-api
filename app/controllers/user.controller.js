@@ -17,7 +17,7 @@
 
     user.save(user)
     .then((result) => {
-        res.send(result)
+        res.send({status: 'success'})
     }).catch((err) => {
         res.status(409).send({
             message: err.message || "Error while create user"
