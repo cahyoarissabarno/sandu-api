@@ -8,9 +8,9 @@
         parents_name: req.body.parents_name,
         parents_phone: req.body.parents_phone, // tambahan
         childs_nik: req.body.childs_nik,
-        address: req.body.address,
-        posyandu_name: req.body.posyandu_name,
-        posyandu_address: req.body.posyandu_address,
+        // address: req.body.address,
+        // posyandu_name: req.body.posyandu_name,
+        // posyandu_address: req.body.posyandu_address,
         weight:[],
         height:[]
     })
@@ -35,9 +35,9 @@
             parents_name: req.body.parents_name,
             parents_phone: req.body.parents_phone, // tambahan
             childs_nik: req.body.childs_nik,
-            address: req.body.address,
-            posyandu_name: req.body.posyandu_name,
-            posyandu_address: req.body.posyandu_address,
+            // address: req.body.address,
+            // posyandu_name: req.body.posyandu_name,
+            // posyandu_address: req.body.posyandu_address,
           }
         }
      )
@@ -75,6 +75,20 @@
  }
 
  exports.getAllUser = (req, res) => {
+    User.find({})
+    .then((result) => {
+        res.send(result)
+    }).catch((err) => {
+        res.status(409).send({
+            message: err.message || "Error while get all user"
+        })
+    })
+ }
+
+ exports.getAge = (req, res) => {
+    console.log(new Date(2022, 11-1, 10).getTime()) // y-m-d convert birth input to milis
+    const dateNow = new Date(new Date().getFullYear(), new Date().getMonth()-1, new Date().getDate()).getTime()
+    Math.round((((dateNow - 1662314400000)/2678400000) + Number.EPSILON) * 10) / 10
     User.find({})
     .then((result) => {
         res.send(result)

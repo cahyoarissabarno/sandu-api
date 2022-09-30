@@ -27,6 +27,7 @@ app.get('/', (req, res)=>{
 })
 
 require('./app/routes/user.routes')(app)
+require('./app/routes/kader.routes')(app)
 
 app.listen(process.env.PORT,()=>{
     console.log(`Server is running on ${process.env.APP_HOST}:${process.env.PORT}`)
