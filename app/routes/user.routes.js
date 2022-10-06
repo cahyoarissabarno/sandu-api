@@ -4,8 +4,8 @@ module.exports = (app) => {
     const height = require('../controllers/height.controller')
     const router = require('express').Router()
 
-    router.get('/:id', users.getUser)
-    router.get('/all', users.getAllUser)
+    router.get('/', users.getAllUser)
+    router.get('/id/:id', users.getUser)
     router.get('/login/:nik', users.getUserByNik)
     router.post('/', users.addUser)
     router.put('/', users.updateUser)
