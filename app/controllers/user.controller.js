@@ -8,11 +8,12 @@
         parents_name: req.body.parents_name,
         parents_phone: req.body.parents_phone, // tambahan
         childs_nik: req.body.childs_nik,
+        data:[]
         // address: req.body.address,
         // posyandu_name: req.body.posyandu_name,
         // posyandu_address: req.body.posyandu_address,
-        weight:[],
-        height:[]
+        // weight:[],
+        // height:[]
     })
 
     user.save(user)
