@@ -8,6 +8,7 @@
         parents_name: req.body.parents_name,
         parents_phone: req.body.parents_phone, // tambahan
         childs_nik: req.body.childs_nik,
+        childs_gender: req.body.childs_gender,
         data:[]
         // address: req.body.address,
         // posyandu_name: req.body.posyandu_name,
