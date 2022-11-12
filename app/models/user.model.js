@@ -8,6 +8,7 @@ module.exports = (mongoose)=>{
             parents_name: { type: String, required: true },
             parents_phone: { type: String, required: true }, // tambahan
             childs_nik: { type: Number, required: true, index: { unique: true, dropDups: true } },
+            isDelete: { type: Boolean, required: true, default: false },
             // address: { type: String, required: true },
             // posyandu_name: { type: String, required: true },
             // posyandu_address: { type: String, required: true },

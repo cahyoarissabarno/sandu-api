@@ -11,6 +11,7 @@ module.exports = (app) => {
     router.post('/', users.addUser)
     router.put('/', users.updateUser)
     router.delete('/', users.deleteUser)
+    router.put('/softdel', users.softDelete)
     
     router.post('/data', data.addData)
     router.post('/data/delete', data.deleteData)

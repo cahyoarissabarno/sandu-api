@@ -9,6 +9,7 @@
         parents_phone: req.body.parents_phone, // tambahan
         childs_nik: req.body.childs_nik,
         childs_gender: req.body.childs_gender,
+        isDelete: false,
         data:[]
         // address: req.body.address,
         // posyandu_name: req.body.posyandu_name,
@@ -54,7 +55,7 @@
 
  exports.getUser = (req, res) => {
     const { id } = req.params
-    User.find({_id: id})
+    User.find({_id: id, isDelete: false})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
@@ -66,7 +67,7 @@
 
  exports.getUserByNik = (req, res) => {
     const { nik } = req.params
-    User.find({childs_nik: nik}, {weight:0, height:0})
+    User.find({childs_nik: nik, isDelete: false}, {weight:0, height:0})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
@@ -77,7 +78,7 @@
  }
 
  exports.getAllUser = (req, res) => {
-    User.find({})
+    User.find({isDelete: false})
     .then((result) => {
         res.send(result)
     }).catch((err) => {
@@ -110,5 +111,23 @@
             message: err.message || "Error while delete user"
         })
     })
+ }
+
+ exports.softDelete = (req, res)=>{
+    User.updateOne(
+        { _id: req.body.user_id },
+        {
+          $set: {
+            isDelete: true,
+          }
+        }
+     )
+     .then((result) => {
+        res.send(result)
+    }).catch((err) => {
+        res.status(409).send({
+            message: err.message || "Error while update user"
+        })
+    });
  }
 
