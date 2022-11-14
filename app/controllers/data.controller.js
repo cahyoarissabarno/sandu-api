@@ -5,9 +5,12 @@
     const isFind = await User.find({
         'data': { 
             $elemMatch: {
-                date: new Date().getDate(),
-                month: new Date().getMonth()+1,
-                year: new Date().getFullYear(),
+                // date: new Date().getDate(),
+                // month: new Date().getMonth()+1,
+                // year: new Date().getFullYear(),
+                date: req.body.date,
+                month: req.body.month,
+                year: req.body.year,
                 // date: 21,
                 // month: 10,
                 // year: 2022
@@ -22,10 +25,11 @@
         User.updateOne(
             { "_id":req.body.user_id },
             { $push: { data: {
-                fullDate: Date.now(),
-                date: new Date().getDate(),
-                month: new Date().getMonth()+1,
-                year: new Date().getFullYear(),
+                // fullDate: Date.now(),
+                fullDate: req.body.fullDate,
+                date: req.body.date,
+                month: req.body.month,
+                year: req.body.year,
                 weight: req.body.weight,
                 height: req.body.height,
                 status_h: req.body.status_h,
