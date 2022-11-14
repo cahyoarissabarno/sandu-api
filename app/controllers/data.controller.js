@@ -12,10 +12,11 @@
                 // month: 10,
                 // year: 2022
             }
-        }
+        }, "_id":req.body.user_id
     }, { "data.$": 1})
 
     // res.send(isFind)
+    console.log(isFind)
 
     if (isFind.length == 0) {
         User.updateOne(
